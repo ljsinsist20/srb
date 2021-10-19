@@ -75,6 +75,7 @@ public class AdminIntegralGradeController {
     public R updateById(
             @ApiParam(value = "积分等级对象", required = true)
             @RequestBody IntegralGrade integralGrade) {
+        Assert.notEmpty(integralGrade.getBorrowAmount(), ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
         boolean result = integralGradeService.updateById(integralGrade);
         if (result) {
             return R.ok().message("修改成功");

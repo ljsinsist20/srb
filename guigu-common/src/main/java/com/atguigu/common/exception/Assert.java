@@ -2,7 +2,10 @@ package com.atguigu.common.exception;
 
 import com.atguigu.common.result.ResponseEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
 
 @Slf4j
 public class Assert {
@@ -82,6 +85,13 @@ public class Assert {
      */
     public static void notEmpty(String s, ResponseEnum responseEnum) {
         if (StringUtils.isEmpty(s)) {
+            log.info("is empty...............");
+            throw new BusinessException(responseEnum);
+        }
+    }
+
+    public static void notEmpty(BigDecimal s, ResponseEnum responseEnum) {
+        if (ObjectUtils.isEmpty(s)) {
             log.info("is empty...............");
             throw new BusinessException(responseEnum);
         }
