@@ -5,8 +5,8 @@ import com.atguigu.common.exception.BusinessException;
 import com.atguigu.common.result.R;
 import com.atguigu.common.result.ResponseEnum;
 import com.atguigu.srb.core.pojo.dto.ExcelDictDTO;
+import com.atguigu.srb.core.pojo.entity.Dict;
 import com.atguigu.srb.core.service.DictService;
-import com.sun.deploy.net.URLEncoder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -18,6 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
+import java.util.List;
 
 @Api(tags = "数据字典管理")
 @RestController
@@ -58,5 +60,14 @@ public class AdminDictController {
         }catch (IOException e) {
             throw new BusinessException(ResponseEnum.EXPORT_DATA_ERROR, e);
         }
+    }
+
+    @ApiOperation("根据上级id获取子节点数据列表")
+    @GetMapping("/listByParentId/{parentId}")
+    public R listByParentId(
+            @ApiParam(value = "上级节点id", required = true)
+            @PathVariable Long parentId) {
+        List<Dict> dictList = dictService.listByParentId(parentId);
+        return R.ok().data("list", dictList);
     }
 }

@@ -9,3 +9,5 @@ gen
 /guigu-common/target/
 /service-base/target/
 /service-core/target/
+/srb_log/
+/srb_log/core/

@@ -17,4 +17,5 @@ import java.util.List;
 public interface DictMapper extends BaseMapper<Dict> {
 
     void insertBatch(List<ExcelDictDTO> list);
+
 }
