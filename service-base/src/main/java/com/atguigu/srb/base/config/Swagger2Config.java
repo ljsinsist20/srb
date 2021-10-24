@@ -36,22 +36,22 @@ public class Swagger2Config {
     }
 
 
-//    @Bean
-//    public Docket webApiConfig(){
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("webApi")
-//                .apiInfo(webApiInfo())
-//                .select()
-//                .paths(Predicates.and(PathSelectors.regex("/api/.*")))
-//                .build();
-//    }
-//
-//    private ApiInfo webApiInfo(){
-//        return new ApiInfoBuilder()
-//                .title("尚融宝网站API文档")
-//                .description("本文档描述了尚融宝网站各个模块的接口的调用方式")
-//                .version("1.6")
-//                .contact(new Contact("ljs", "http://atguigu.com", "admin@atguigu.com"))
-//                .build();
-//    }
+    @Bean
+    public Docket webApiConfig(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("webApi")
+                .apiInfo(webApiInfo())
+                .select()
+                .paths(Predicates.and(PathSelectors.regex("/api/.*")))
+                .build();
+    }
+
+    private ApiInfo webApiInfo(){
+        return new ApiInfoBuilder()
+                .title("尚融宝网站API文档")
+                .description("本文档描述了尚融宝网站各个模块的接口的调用方式")
+                .version("1.6")
+                .contact(new Contact("ljs", "http://atguigu.com", "admin@atguigu.com"))
+                .build();
+    }
 }

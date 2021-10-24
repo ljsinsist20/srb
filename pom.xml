@@ -8,7 +8,8 @@
         <module>guigu-common</module>
         <module>service-base</module>
         <module>service-core</module>
-<!--        <module>all-test</module>-->
+        <module>service-sms</module>
+        <!--        <module>all-test</module>-->
     </modules>
     <groupId>com.atguigu</groupId>
     <artifactId>srb</artifactId>
