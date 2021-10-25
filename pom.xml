@@ -9,6 +9,7 @@
         <module>service-base</module>
         <module>service-core</module>
         <module>service-sms</module>
+        <module>service-oss</module>
         <!--        <module>all-test</module>-->
     </modules>
     <groupId>com.atguigu</groupId>
