@@ -47,10 +47,12 @@
         <jwt.version>0.7.0</jwt.version>
         <httpclient.version>4.5.1</httpclient.version>
         <!-- 文件拷贝时的编码 -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- 编译时的编码 -->
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+<!--        &lt;!&ndash; 编译时的编码 &ndash;&gt;-->
+<!--        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>-->
+        <org.mapstruct.mapstruct>1.3.1.Final</org.mapstruct.mapstruct>
+        <cn.hutool.all>5.4.5</cn.hutool.all>
     </properties>
 
     <dependencyManagement>
@@ -195,6 +197,18 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>${httpclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${cn.hutool.all}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.mapstruct}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
