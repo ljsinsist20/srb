@@ -5,6 +5,7 @@ import cn.hutool.core.util.PhoneUtil;
 import com.atguigu.common.exception.Assert;
 import com.atguigu.common.result.R;
 import com.atguigu.common.result.ResponseEnum;
+import com.atguigu.srb.base.util.JwtUtils;
 import com.atguigu.srb.core.pojo.vo.LoginVO;
 import com.atguigu.srb.core.pojo.vo.RegisterVO;
 import com.atguigu.srb.core.pojo.vo.UserInfoVO;
@@ -70,6 +71,18 @@ public class UserInfoController {
         String ip = request.getRemoteAddr();
         UserInfoVO userInfoVO = userInfoService.login(loginVO, ip);
         return R.ok().data("userInfo", userInfoVO);
+    }
+
+    @ApiOperation("验证token")
+    @GetMapping("/checkToken")
+    public R checkToken(HttpServletRequest request){
+        String token = request.getHeader("token");
+        boolean flag = JwtUtils.checkToken(token);
+        if (flag) {
+            return R.ok();
+        } else {
+            return R.setResult(ResponseEnum.LOGIN_AUTH_ERROR);
+        }
     }
 }
 
