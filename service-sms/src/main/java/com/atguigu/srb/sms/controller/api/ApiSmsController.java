@@ -5,6 +5,7 @@ import cn.hutool.core.util.RandomUtil;
 import com.atguigu.common.exception.Assert;
 import com.atguigu.common.result.R;
 import com.atguigu.common.result.ResponseEnum;
+import com.atguigu.srb.sms.client.CoreUserInfoClient;
 import com.atguigu.srb.sms.service.SmsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +30,9 @@ public class ApiSmsController {
     @Resource
     private RedisTemplate redisTemplate;
 
+    @Resource
+    private CoreUserInfoClient coreUserInfoClient;
+
     @ApiOperation("获取验证码")
     @GetMapping("send/{mobile}")
     public R send(
@@ -36,6 +40,9 @@ public class ApiSmsController {
             @PathVariable String mobile){
         Assert.notEmpty(mobile, ResponseEnum.MOBILE_NULL_ERROR);
         Assert.isTrue(PhoneUtil.isPhone(mobile), ResponseEnum.MOBILE_ERROR);
+        boolean flag = coreUserInfoClient.checkMobile(mobile);
+        Assert.isTrue(flag == false, ResponseEnum.MOBILE_EXIST_ERROR);
+
         Object oldCode =  redisTemplate.opsForValue().get("srb:sms:code:" + mobile);
         if (oldCode != null) {
             return R.ok().message("请在60秒后再次提交");
