@@ -5,6 +5,10 @@ spring:
    active: dev # 环境设置
   application:
    name: service-oss # 服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
 aliyun:
   oss:
     endpoint: oss-cn-hangzhou.aliyuncs.com
